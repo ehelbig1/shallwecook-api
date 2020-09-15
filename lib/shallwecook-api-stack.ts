@@ -1,9 +1,16 @@
-import * as cdk from '@aws-cdk/core';
+import { Stack, Construct, StackProps, RemovalPolicy } from "@aws-cdk/core";
+import { Table, AttributeType, BillingMode } from "@aws-cdk/aws-dynamodb";
 
-export class ShallwecookApiStack extends cdk.Stack {
-  constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
+export class ShallwecookApiStack extends Stack {
+  constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props);
 
-    // The code that defines your stack goes here
+    const table = new Table(this, "recipes", {
+      tableName: "recipes",
+      partitionKey: { name: "category", type: AttributeType.STRING },
+      sortKey: { name: "diet", type: AttributeType.STRING },
+      billingMode: BillingMode.PAY_PER_REQUEST,
+      removalPolicy: RemovalPolicy.DESTROY,
+    });
   }
 }
