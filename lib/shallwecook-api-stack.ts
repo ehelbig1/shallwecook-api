@@ -72,10 +72,6 @@ export class ShallwecookApiStack extends Stack {
         tempPasswordValidity: Duration.days(3),
       },
       accountRecovery: AccountRecovery.EMAIL_ONLY,
-      emailSettings: {
-        from: "noreply@shallwecook.com",
-        replyTo: "support@shallwecook.com",
-      },
     });
 
     const client = userPool.addClient("shallwecook", {
