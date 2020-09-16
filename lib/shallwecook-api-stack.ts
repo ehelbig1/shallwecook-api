@@ -12,7 +12,7 @@ export class ShallwecookApiStack extends Stack {
     super(scope, id, props);
 
     const table = new Table(this, "recipes", {
-      tableName: "recipes",
+      tableName: "recipesTable",
       partitionKey: { name: "category", type: AttributeType.STRING },
       sortKey: { name: "id", type: AttributeType.NUMBER },
       billingMode: BillingMode.PAY_PER_REQUEST,
